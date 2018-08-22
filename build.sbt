@@ -1,12 +1,12 @@
-name := "HashIndexGenerator"
+name := "HashIndexTable"
 
-description := "A hash index generator"
+description := "A Hash Index Table"
 
 scalaVersion := "2.12.6"
 
 organization := "com.github.mideo"
 
-lazy val `HashIndexGenerator` = (project in file("."))
+lazy val `HashIndexTable` = (project in file("."))
   .settings(
     scalacOptions := Seq(
       "-unchecked",
