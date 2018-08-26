@@ -1,6 +1,11 @@
 package com.github.mideo.hashindex
 
-class DataTableSpec extends HashIndexGeneratorSpec {
+import com.github.mideo.hashindex.exceptions.exceptions.{
+  InvalidCoordinateException,
+  OutOfRangeException
+}
+
+class DataTableSpec extends HashIndexTableSpec {
 
   it should "not permit init with invalid coordinates x" in {
 

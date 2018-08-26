@@ -1,5 +1,11 @@
 package com.github.mideo.hashindex
 
+import com.github.mideo.hashindex.exceptions.exceptions.{
+  InvalidCoordinateException,
+  OutOfRangeException,
+  RowLimitReachedException
+}
+
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
 sealed case class Dimension(x: Int, y: Int)
