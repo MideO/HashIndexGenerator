@@ -15,7 +15,7 @@ sealed case class Coordinate(x: Int, y: Int)
 sealed case class ColumnSize(number: Int)
 
 
-sealed class HashDataTable[T](dimension: Dimension) {
+sealed class DataTable[T](dimension: Dimension) {
   def freeCoordinates(): List[Coordinate] = (0 until dimension.x).flatMap {
     x =>
       (0 until (dimension.y - dataTable(x).length)) map {
@@ -46,8 +46,8 @@ sealed class HashDataTable[T](dimension: Dimension) {
 }
 
 
-object HashDataTable {
-  def apply[T](dimension: Dimension): HashDataTable[T] = {
-    new HashDataTable(dimension)
+object DataTable {
+  def apply[T](dimension: Dimension): DataTable[T] = {
+    new DataTable(dimension)
   }
 }
