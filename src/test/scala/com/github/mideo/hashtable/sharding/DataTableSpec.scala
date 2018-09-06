@@ -2,7 +2,7 @@ package com.github.mideo.hashtable.sharding
 
 import com.github.mideo.hashtable.sharding.exceptions.{InvalidCoordinateException, OutOfRangeException}
 
-class DataTableSpec extends HashIndexTableSpec {
+class DataTableSpec extends HashTableShardingSpec {
 
   it should "not permit init with invalid coordinates x" in {
 

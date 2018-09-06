@@ -2,7 +2,7 @@ package com.github.mideo.hashtable.sharding
 
 import scala.annotation.tailrec
 
-trait HashFunction {
+trait HashFunction extends Hashing {
   private val BigPrime = 10657
 
 

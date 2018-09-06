@@ -2,7 +2,7 @@ package com.github.mideo.hashtable.sharding
 
 import java.util.UUID
 
-class HashFunctionSpec extends HashIndexTableSpec {
+class HashFunctionSpec extends HashTableShardingSpec {
   val limit: Int = 100
 
   object AHashFunction extends HashFunction

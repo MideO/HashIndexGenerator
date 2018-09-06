@@ -3,7 +3,7 @@ package com.github.mideo.hashtable.sharding
 import scala.collection.mutable.ArrayBuffer
 
 class MaxSizeCollisionSpec
-  extends HashIndexTableSpec {
+  extends HashTableShardingSpec {
 
   object Subject extends MaxSizeCollision
 
