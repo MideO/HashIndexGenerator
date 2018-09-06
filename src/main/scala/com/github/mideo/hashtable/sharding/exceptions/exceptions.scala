@@ -1,4 +1,4 @@
-package com.github.mideo.hashindex.exceptions
+package com.github.mideo.hashtable.sharding
 
 package object exceptions {
   case class RowLimitReachedException(private val message: String = "",

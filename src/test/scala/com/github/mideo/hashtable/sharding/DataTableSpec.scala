@@ -1,4 +1,4 @@
-package com.github.mideo.hashindex
+package com.github.mideo.hashtable.sharding
 
 import com.github.mideo.hashindex.exceptions.exceptions.{
   InvalidCoordinateException,

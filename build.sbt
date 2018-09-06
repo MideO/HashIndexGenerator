@@ -1,6 +1,6 @@
-name := "HashIndexTable"
+name := "HashTableSharding"
 
-description := "A Hash Index Table"
+description := "HashTable Sharding"
 
 scalaVersion := "2.12.6"
 
