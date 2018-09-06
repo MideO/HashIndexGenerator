@@ -12,11 +12,11 @@ trait HashFunction extends Hashing {
     }).reduce(BigPrime * _ + BigPrime * _) * BigPrime)
   }
 
-  @tailrec final def apply(a: Any, limit: Int): Int = {
+  @tailrec final def hash(a: Any, limit: Int): Int = {
     val bigInt: BigInt = generateNumber(a)
     math.abs((bigInt % limit + 1).toInt) match {
-      case i if i > limit => apply(bigInt / BigPrime, limit)
-      case i if i == 0 => apply(bigInt * BigPrime, limit)
+      case i if i > limit => hash(bigInt / BigPrime, limit)
+      case i if i == 0 => hash(bigInt * BigPrime, limit)
       case i => i % 100
     }
   }

@@ -11,37 +11,37 @@ class HashFunctionSpec extends HashTableShardingSpec {
     val s: String = UUID.randomUUID().toString
 
 
-    withClue(s"${AHashFunction(s, limit)} is less than limit 0") {
-      AHashFunction.apply(s, limit) > 0 should be(true)
+    withClue(s"${AHashFunction.hash(s, limit)} is less than limit 0") {
+      AHashFunction.hash(s, limit) > 0 should be(true)
     }
-    withClue(s"${AHashFunction(s, limit)} is greater than limit $limit") {
-      AHashFunction.apply(s, limit) < limit should be(true)
+    withClue(s"${AHashFunction.hash(s, limit)} is greater than limit $limit") {
+      AHashFunction.hash(s, limit) < limit should be(true)
     }
   }
 
   it should "generate a same int with different limits for a given object" in {
     val s: String = UUID.randomUUID().toString
 
-    withClue(s"${AHashFunction(s, limit)} is not same as ${AHashFunction.apply(s, 200)}") {
-      AHashFunction.apply(s, limit) should equal(AHashFunction.apply(s, 200))
+    withClue(s"${AHashFunction.hash(s, limit)} is not same as ${AHashFunction.hash(s, 200)}") {
+      AHashFunction.hash(s, limit) should equal(AHashFunction.hash(s, 200))
     }
   }
 
 
   it should "always generate the same number for same string" in {
     val s: String = UUID.randomUUID().toString
-    AHashFunction.apply(s, limit) should equal(AHashFunction(s, limit))
+    AHashFunction.hash(s, limit) should equal(AHashFunction.hash(s, limit))
   }
 
 
   it should "generate unique number" in {
-    AHashFunction(UUID.randomUUID().toString, limit) should not equal AHashFunction(UUID.randomUUID().toString, limit)
+    AHashFunction.hash(UUID.randomUUID().toString, limit) should not equal AHashFunction.hash(UUID.randomUUID().toString, limit)
   }
 
   it should "generate unique numbers" in {
     val dataMap: List[Int] =
       (((0 until 1000000) map {
-        _ => AHashFunction(UUID.randomUUID().toString, limit)
+        _ => AHashFunction.hash(UUID.randomUUID().toString, limit)
       } groupBy identity mapValues (_.size)).values toList) sorted
 
     withClue(s"Data not distributed across all buckets") {

@@ -2,26 +2,15 @@ package com.github.mideo.hashtable.sharding
 
 import java.util.UUID
 
-class  DateTableShardingSpec extends HashTableShardingSpec {
+class DateTableShardingSpec extends HashTableShardingSpec {
 
-  it should "shard data across dataTable" in {
-
-    DateTableSharding[String](DataTable(Dimension(2, 5)))
-      .shard((1 to 10)
-        map { _ => UUID.randomUUID().toString} toList:_*)
-      .isInstanceOf[DataTable[String]] should be(true)
-  }
-
-
-
-  case class DateTableSharding[T](dataTable: DataTable[T])
-    extends Sharding
-      with HashFunction
-      with MaxSizeCollision {
-    def shard(t:T*): DataTable[T] = {
-      dataTable
+  "DateTableSharding" should "distribute data across dataTable" in {
+    forAll(Table("dimension", Dimension(20, 1), Dimension(4, 4), Dimension(20, 1000))) {
+      dimension =>
+        DateTableSharding[String](dimension)
+          .shard((1 to dimension.x * dimension.y)
+            map { _ => UUID.randomUUID().toString } toList).freeCoordinates() should equal(List.empty[Coordinate])
     }
 
   }
-
 }

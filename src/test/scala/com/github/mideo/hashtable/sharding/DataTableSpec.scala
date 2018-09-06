@@ -23,7 +23,7 @@ class DataTableSpec extends HashTableShardingSpec {
   it should "put and get entry" in {
     val table: DataTable[Int] = DataTable(Dimension(3, 10))
 
-    val coordinate = table.put(15, ColumnSize(3))
+    val coordinate = table.put(15, Column(3))
     table.get(coordinate) should equal(15)
   }
 
@@ -31,7 +31,7 @@ class DataTableSpec extends HashTableShardingSpec {
     val table: DataTable[Int] = DataTable(Dimension(3, 10))
 
     the[OutOfRangeException] thrownBy {
-      table.put(15, ColumnSize(4))
+      table.put(15, Column(4))
     } should have message "Coordinate of range"
   }
 
@@ -46,10 +46,10 @@ class DataTableSpec extends HashTableShardingSpec {
 
   it should "provide list of free Coordinates when all cells are occupied " in {
     val table: DataTable[Int] = DataTable(Dimension(2, 2))
-    table.put(15, ColumnSize(1))
-    table.put(15, ColumnSize(1))
-    table.put(15, ColumnSize(2))
-    table.put(15, ColumnSize(2))
+    table.put(15, Column(1))
+    table.put(15, Column(1))
+    table.put(15, Column(2))
+    table.put(15, Column(2))
 
     val free:List[Coordinate] = table.freeCoordinates()
 
@@ -58,10 +58,10 @@ class DataTableSpec extends HashTableShardingSpec {
 
   it should "provide list of free Coordinates when some cells are occupied " in {
     val table: DataTable[Int] = DataTable(Dimension(3, 10))
-    table.put(15, ColumnSize(1))
-    table.put(15, ColumnSize(1))
-    table.put(15, ColumnSize(2))
-    table.put(15, ColumnSize(2))
+    table.put(15, Column(1))
+    table.put(15, Column(1))
+    table.put(15, Column(2))
+    table.put(15, Column(2))
     val free:List[Coordinate] = table.freeCoordinates()
 
     free.size should equal((3*10) - 4)
