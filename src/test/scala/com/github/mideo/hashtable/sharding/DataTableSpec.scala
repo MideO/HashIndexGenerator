@@ -1,9 +1,6 @@
 package com.github.mideo.hashtable.sharding
 
-import com.github.mideo.hashindex.exceptions.exceptions.{
-  InvalidCoordinateException,
-  OutOfRangeException
-}
+import com.github.mideo.hashtable.sharding.exceptions.{InvalidCoordinateException, OutOfRangeException}
 
 class DataTableSpec extends HashIndexTableSpec {
 
